@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
 var distDir = './dist/',
     devHtmlPath = ['./index.html'],
-    devLessPath = ['./less/*.less'];
+    devLessPath = ['./less/main.less'];
 
 gulp.task('default', ['build', 'connect', 'watch']);
 
