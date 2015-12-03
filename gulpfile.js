@@ -24,12 +24,12 @@ gulp.task('clean', function() {
     return del([distDir]);
 });
 
-gulp.task('cname', function() {
+gulp.task('cname', ['clean'], function() {
     return gulp.src('./CNAME')
         .pipe(gulp.dest(distDir));
 });
 
-gulp.task('html', function() {
+gulp.task('html', ['clean'], function() {
     return gulp.src(devHtmlPath)
         .pipe(gulp.dest(distDir))
         .pipe(connect.reload());
