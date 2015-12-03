@@ -26,9 +26,9 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(devHtmlPath, ['html']);
-    gulp.watch(devLessDir, ['less']);
-    gulp.watch(devScriptsDir, ['scripts']);
+    gulp.watch(devHtmlPath, ['build']);
+    gulp.watch(devLessDir, ['build']);
+    gulp.watch(devScriptsDir, ['build']);
 });
 
 gulp.task('clean', function() {
@@ -65,7 +65,7 @@ gulp.task('scripts', ['clean'], function() {
         .pipe(connect.reload());
 });
 
-gulp.task('build', ['clean', 'cname', 'html', 'less', 'scripts']);
+gulp.task('build', ['cname', 'html', 'less', 'scripts']);
 
 gulp.task('deploy', ['build'], function() {
     return gulp.src(distDir + '**/*')
