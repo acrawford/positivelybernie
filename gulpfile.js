@@ -10,10 +10,12 @@ gulp.task('clean', function() {
     del([distDir + '**']);
 });
 
-gulp.task('build', ['clean'], function() {
-    return gulp.src('./index.html')
+gulp.task('html', function() {
+    gulp.src('./index.html')
         .pipe(gulp.dest(distDir));
 });
+
+gulp.task('build', ['clean', 'html']);
 
 gulp.task('deploy', ['build'], function() {
     return gulp.src(distDir + '**/*')
