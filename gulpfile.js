@@ -11,12 +11,12 @@ gulp.task('clean', function() {
 });
 
 gulp.task('cname', function() {
-    gulp.src('./CNAME')
+    return gulp.src('./CNAME')
         .pipe(gulp.dest(distDir));
 });
 
 gulp.task('html', function() {
-    gulp.src('./index.html')
+    return gulp.src('./index.html')
         .pipe(gulp.dest(distDir));
 });
 
