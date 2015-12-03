@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     del = require('del'),
     minifyHTML = require('gulp-minify-html'),
     less = require('gulp-less'),
+    minifyCSS = require('gulp-minify-css'),
     ghPages = require('gulp-gh-pages');
 
 var distDir = './dist/',
@@ -43,6 +44,7 @@ gulp.task('html', ['clean'], function() {
 gulp.task('less', ['clean'], function() {
     return gulp.src(devLessPath)
         .pipe(less())
+        .pipe(minifyCSS())
         .pipe(gulp.dest(distDir + 'css/'))
         .pipe(connect.reload());
 });
