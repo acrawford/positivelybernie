@@ -1,10 +1,24 @@
 var gulp = require('gulp'),
+    connect = require('gulp-connect'),
     del = require('del'),
     ghPages = require('gulp-gh-pages');
 
-var distDir = './dist/';
+var distDir = './dist/',
+    devHtmlPath = ['index.html'];
 
-gulp.task('default');
+gulp.task('default', ['build', 'connect', 'watch']);
+
+gulp.task('connect', function() {
+    connect.server({
+        port: 8080,
+        root: distDir,
+        livereload: true,
+    });
+});
+
+gulp.task('watch', function() {
+    gulp.watch(devHtmlPath, ['html']);
+});
 
 gulp.task('clean', function() {
     return del([distDir]);
@@ -16,8 +30,9 @@ gulp.task('cname', function() {
 });
 
 gulp.task('html', function() {
-    return gulp.src('./index.html')
-        .pipe(gulp.dest(distDir));
+    return gulp.src(devHtmlPath)
+        .pipe(gulp.dest(distDir))
+        .pipe(connect.reload());
 });
 
 gulp.task('build', ['clean', 'cname', 'html']);
