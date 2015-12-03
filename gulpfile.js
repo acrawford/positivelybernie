@@ -4,7 +4,7 @@ var gulp = require('gulp'),
 
 var distDir = './dist/';
 
-gulp.task('default', function() {});
+gulp.task('default');
 
 gulp.task('clean', function() {
     return del([distDir + '**']);
