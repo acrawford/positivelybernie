@@ -7,7 +7,7 @@ var distDir = './dist/';
 gulp.task('default', function() {});
 
 gulp.task('clean', function() {
-    del([distDir + '**']);
+    return del([distDir + '**']);
 });
 
 gulp.task('cname', function() {
