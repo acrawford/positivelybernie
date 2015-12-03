@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     ghPages = require('gulp-gh-pages');
 
 var distDir = './dist/',
-    devHtmlPath = ['index.html'];
+    devHtmlPath = ['./index.html'],
 
 gulp.task('default', ['build', 'connect', 'watch']);
 
