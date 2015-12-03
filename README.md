@@ -10,6 +10,7 @@ Development of this website is done using [Gulp](http://gulpjs.com/). Dependenci
 
 1. Install [Node.js](https://nodejs.org/), which includes npm.
 2. Install project dependencies by running 'npm install' from within your local project directory.
+3. To run a build of the website, run the 'gulp' command from within your local project directory.
 
 Deploying
 ---------
