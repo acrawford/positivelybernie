@@ -7,7 +7,7 @@ var distDir = './dist/';
 gulp.task('default');
 
 gulp.task('clean', function() {
-    return del([distDir + '**']);
+    return del([distDir]);
 });
 
 gulp.task('cname', function() {
@@ -23,7 +23,7 @@ gulp.task('html', function() {
 gulp.task('build', ['clean', 'cname', 'html']);
 
 gulp.task('deploy', ['build'], function() {
-    return gulp.src(distDir + '**/*')
+    return gulp.src(distDir)
         .pipe(ghPages({
             branch: 'gh-pages',
             message: 'Build and deploy',
