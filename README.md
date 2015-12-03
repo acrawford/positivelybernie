@@ -16,5 +16,4 @@ Deploying
 ---------
 
 This website is configured to be deployed using the [GitHub Pages](https://pages.github.com/) 
-feature of GitHub. Deploying is simply a matter of pushing the `gh-pages` branch to 
-GitHub.
+feature of GitHub. Deploying is simply a matter of running the ''gulp deploy'' command from within your local project directory once the development environment has been created. The website will be built in your local 'dist' directory, and the contents of which will then be committed to the remote 'gh-pages' branch on GitHub.
