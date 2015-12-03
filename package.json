@@ -1,0 +1,10 @@
+{
+    "name": "positivelybernie",
+    "description": "A website for the \"Positively Bernie\" DVD offered by CCTV Center for Media & Democracy.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/acrawford/positivelybernie"
+    },
+    "license": "UNLICENSED",
+    "private": true
+}
