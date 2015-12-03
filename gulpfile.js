@@ -10,8 +10,10 @@ var gulp = require('gulp'),
 
 var distDir = './dist/',
     devHtmlPath = ['./index.html'],
-    devLessPath = ['./less/main.less'],
-    devScriptsPath = ['./js/main.js'];
+    devLessDir = ['./less/*.less'],
+    devLessMain = ['./less/main.less'],
+    devScriptsDir = ['./js/*.js'],
+    devScriptsMain = ['./js/main.js'];
 
 gulp.task('default', ['build', 'connect', 'watch']);
 
@@ -25,8 +27,8 @@ gulp.task('connect', function() {
 
 gulp.task('watch', function() {
     gulp.watch(devHtmlPath, ['html']);
-    gulp.watch(devLessPath, ['less']);
-    gulp.watch(devScriptsPath, ['scripts']);
+    gulp.watch(devLessDir, ['less']);
+    gulp.watch(devScriptsDir, ['scripts']);
 });
 
 gulp.task('clean', function() {
@@ -46,7 +48,7 @@ gulp.task('html', ['clean'], function() {
 });
 
 gulp.task('less', ['clean'], function() {
-    return gulp.src(devLessPath)
+    return gulp.src(devLessMain)
         .pipe(less())
         .pipe(minifyCSS())
         .pipe(gulp.dest(distDir + 'css/'))
@@ -54,7 +56,7 @@ gulp.task('less', ['clean'], function() {
 });
 
 gulp.task('scripts', ['clean'], function() {
-    return gulp.src(devScriptsPath)
+    return gulp.src(devScriptsMain)
         .pipe(include())
         .pipe(uglify({
             preserveComments: 'license',
