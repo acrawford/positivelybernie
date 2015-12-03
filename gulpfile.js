@@ -10,12 +10,17 @@ gulp.task('clean', function() {
     del([distDir + '**']);
 });
 
+gulp.task('cname', function() {
+    gulp.src('./CNAME')
+        .pipe(gulp.dest(distDir));
+});
+
 gulp.task('html', function() {
     gulp.src('./index.html')
         .pipe(gulp.dest(distDir));
 });
 
-gulp.task('build', ['clean', 'html']);
+gulp.task('build', ['clean', 'cname', 'html']);
 
 gulp.task('deploy', ['build'], function() {
     return gulp.src(distDir + '**/*')
