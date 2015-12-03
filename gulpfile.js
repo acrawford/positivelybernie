@@ -38,7 +38,7 @@ gulp.task('html', ['clean'], function() {
 gulp.task('build', ['clean', 'cname', 'html']);
 
 gulp.task('deploy', ['build'], function() {
-    return gulp.src(distDir)
+    return gulp.src(distDir + '**/*')
         .pipe(ghPages({
             branch: 'gh-pages',
             message: 'Build and deploy',
