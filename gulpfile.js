@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
     del = require('del'),
+    minifyHTML = require('gulp-minify-html'),
     ghPages = require('gulp-gh-pages');
 
 var distDir = './dist/',
@@ -31,6 +32,7 @@ gulp.task('cname', ['clean'], function() {
 
 gulp.task('html', ['clean'], function() {
     return gulp.src(devHtmlPath)
+        .pipe(minifyHTML())
         .pipe(gulp.dest(distDir))
         .pipe(connect.reload());
 });
