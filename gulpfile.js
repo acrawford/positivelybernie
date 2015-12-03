@@ -2,10 +2,12 @@ var gulp = require('gulp'),
     connect = require('gulp-connect'),
     del = require('del'),
     minifyHTML = require('gulp-minify-html'),
+    less = require('gulp-less'),
     ghPages = require('gulp-gh-pages');
 
 var distDir = './dist/',
     devHtmlPath = ['./index.html'],
+    devLessPath = ['./less/*.less'];
 
 gulp.task('default', ['build', 'connect', 'watch']);
 
@@ -19,6 +21,7 @@ gulp.task('connect', function() {
 
 gulp.task('watch', function() {
     gulp.watch(devHtmlPath, ['html']);
+    gulp.watch(devLessPath, ['less']);
 });
 
 gulp.task('clean', function() {
@@ -37,7 +40,14 @@ gulp.task('html', ['clean'], function() {
         .pipe(connect.reload());
 });
 
-gulp.task('build', ['clean', 'cname', 'html']);
+gulp.task('less', ['clean'], function() {
+    return gulp.src(devLessPath)
+        .pipe(less())
+        .pipe(gulp.dest(distDir + 'css/'))
+        .pipe(connect.reload());
+});
+
+gulp.task('build', ['clean', 'cname', 'html', 'less']);
 
 gulp.task('deploy', ['build'], function() {
     return gulp.src(distDir + '**/*')
