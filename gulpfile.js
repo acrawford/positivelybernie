@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     ghPages = require('gulp-gh-pages');
 
 var distDir = './dist/',
-    devHtmlPath = ['./index.html'],
+    devHtmlPath = ['./templates/pages/index.html'],
     devLessDir = ['./less/*.less'],
     devLessMain = ['./less/main.less'],
     devScriptsDir = ['./js/*.js'],
