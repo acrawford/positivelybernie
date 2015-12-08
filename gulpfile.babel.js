@@ -162,7 +162,9 @@ gulp.task('wiredep', () => {
 // deploy to GitHub Pages
 gulp.task('deploy', ['build'], () => {
   return gulp.src('dist')
-    .pipe($.subtree())
+    .pipe(subtree({
+      branch: 'gh-pages',
+    }))
     .pipe($.clean());
 });
 
