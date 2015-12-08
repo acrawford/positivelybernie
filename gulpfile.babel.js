@@ -4,6 +4,8 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
+import subtree from 'gulp-subtree';
+import clean from 'gulp-clean';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -155,6 +157,13 @@ gulp.task('wiredep', () => {
       ignorePath: /^(\.\.\/)*\.\./
     }))
     .pipe(gulp.dest('app'));
+});
+
+// deploy to GitHub Pages
+gulp.task('deploy', ['build'], () => {
+  return gulp.src('dist')
+    .pipe($.subtree())
+    .pipe($.clean());
 });
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
