@@ -1,7 +1,7 @@
 $icon-font-path: '../fonts/';
 
 // bower:scss
-@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "_bootstrap.scss";
 // endbower
 
 .browserupgrade {
@@ -11,13 +11,144 @@ $icon-font-path: '../fonts/';
   padding: 0.2em 0;
 }
 
-body {
+.page-header {
+  @include clearfix;
+  margin-top: 0;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background: $brand-red;
+  border-bottom: none;
   text-align: center;
-  .page-header {
-    h1 {
-      small {
-        display: block;
+  @media (min-width: $screen-sm-min) {
+    padding-top: 10em;
+    padding-bottom: 8em;
+  }
+  &, & * {
+    color: white;
+  }
+  h1 {
+    @include text-hide;
+    width: 325px;
+    height: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    background: transparent url('/images/positively-bernie-325x75.png') no-repeat no-repeat center center;
+    @media (min-width: $screen-sm-min) {
+      width: 650px;
+      height: 150px;
+      background-image: url('/images/positively-bernie-650x150.png');
+    }
+    small {
+      display: block;
+    }
+  }
+  .tag {
+    margin-top: .6em;
+    font-size: 90%;
+    &, & * {
+      color: darken(white, 10%);
+    }
+    .description {
+      display: block;
+    }
+    @media (min-width: $screen-sm-min) {
+      margin-top: 1em;
+      font-size: 115%;
+    }
+  }
+  .more-link {
+    display: none;
+    margin-top: 1em;
+    @media (min-width: $screen-sm-min) {
+      display: block;
+      margin-top: 6em;
+    }
+    .icon {
+      font-size: 150%;
+      color: darken(white, 15%);
+      @media (min-width: $screen-sm-min) {
+        font-size: 300%;
       }
     }
   }
+}
+section {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+#about {
+  .product {
+    margin-top: 1em;
+  }
+  #buy {
+    text-align: center;
+    .btn {
+      font-weight: bold;
+      &.btn-primary {
+        .separator {
+          font-weight: normal;
+          color: lighten($brand-primary, 20%);
+        }
+        .price {
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}
+#sample {
+  text-align: center;
+  @media (min-width: $screen-md-min) {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+#contents {
+  text-align: center;
+  .title {
+    font-size: ceil(($font-size-base * 1.1));
+    margin-top: ($line-height-computed / 2);
+    margin-bottom: ($line-height-computed / 4);
+  }
+  .year {
+    margin-bottom: ($line-height-computed / 4);
+    font-size: $font-size-base;
+    font-style: italic;
+    color: $gray-light;
+  }
+  .buy {
+    margin-top: 1.4em;
+    color: lighten($text-color, 30%);
+    .offer {
+      max-width: 600px;
+      display: block;
+      margin-bottom: .2em;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: ceil(($font-size-base * 1.2));
+    }
+  }
+}
+.page-footer {
+  margin-top: 4em;
+  padding-top: 1em;
+  background-color: $gray-lighter;
+  border-top: 1px solid $gray-light;
+  .name {
+    white-space: nowrap;
+  }
+  .copyright {
+    font-style: italic;
+    &, & * {
+      color: lighten(black, 60%);
+    }
+  }
+}
+.support {
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: ($line-height-base * 0.8);
+  color: lighten($text-color, 40%);
 }
